@@ -1,5 +1,5 @@
 {
-  "timestamp": "2025-03-29T17:43:55.697959",
+  "timestamp": "2025-03-29T19:27:15.776193",
   "optimized_appliances": {
     "dishwasher": {
       "id": 1,
@@ -20,13 +20,13 @@
         "Afternoon"
       ],
       "optimized_hours": [
-        9
+        6
       ],
       "estimated_savings": {
         "current_cost": 0.39,
-        "optimal_cost": 0.1,
+        "optimal_cost": 0.09,
         "savings": 0.29,
-        "percentage": 73.7
+        "percentage": 75.7
       }
     },
     "washing_machine": {
@@ -46,13 +46,13 @@
         "Afternoon"
       ],
       "optimized_hours": [
-        7
+        6
       ],
       "estimated_savings": {
         "current_cost": 0.07,
-        "optimal_cost": 0.05,
-        "savings": 0.01,
-        "percentage": 21.0
+        "optimal_cost": 0.04,
+        "savings": 0.03,
+        "percentage": 39.8
       }
     },
     "dryer": {
@@ -102,15 +102,15 @@
         "Afternoon"
       ],
       "optimized_hours": [
-        11,
         12,
-        13
+        13,
+        14
       ],
       "estimated_savings": {
         "current_cost": 3.26,
-        "optimal_cost": 1.53,
-        "savings": 1.74,
-        "percentage": 53.2
+        "optimal_cost": 1.51,
+        "savings": 1.75,
+        "percentage": 53.6
       }
     },
     "water_heater": {
@@ -282,17 +282,22 @@
     ],
     "6": [
       {
+        "name": "Dishwasher",
+        "power": 1200,
+        "flexible": true
+      },
+      {
+        "name": "Washing Machine",
+        "power": 500,
+        "flexible": true
+      },
+      {
         "name": "Refrigerator",
         "power": 150,
         "flexible": false
       }
     ],
     "7": [
-      {
-        "name": "Washing Machine",
-        "power": 500,
-        "flexible": true
-      },
       {
         "name": "Refrigerator",
         "power": 150,
@@ -313,11 +318,6 @@
     ],
     "9": [
       {
-        "name": "Dishwasher",
-        "power": 1200,
-        "flexible": true
-      },
-      {
         "name": "Refrigerator",
         "power": 150,
         "flexible": false
@@ -336,11 +336,6 @@
       }
     ],
     "11": [
-      {
-        "name": "EV Charger",
-        "power": 7200,
-        "flexible": true
-      },
       {
         "name": "Water Heater",
         "power": 4500,
@@ -387,6 +382,11 @@
       }
     ],
     "14": [
+      {
+        "name": "EV Charger",
+        "power": 7200,
+        "flexible": true
+      },
       {
         "name": "Air Conditioner",
         "power": 3500,
@@ -494,25 +494,25 @@
       "2": 1.35,
       "3": 1.07,
       "4": 1.35,
-      "5": 1.07,
-      "6": 1.35,
-      "7": 1.07,
-      "8": 1.35,
+      "5": 1.64,
+      "6": 1.92,
+      "7": 2.21,
+      "8": 1.92,
       "9": 1.64,
       "10": 1.92,
       "11": 2.21,
       "12": 2.49,
-      "13": 2.21,
-      "14": 2.49,
+      "13": 2.78,
+      "14": 3.06,
       "15": 2.78,
       "16": 2.49,
-      "17": 2.21,
-      "18": 1.92,
-      "19": 1.64,
-      "20": 1.35,
-      "21": 1.07,
-      "22": 0.78,
-      "23": 0.5
+      "17": 2.78,
+      "18": 2.49,
+      "19": 2.21,
+      "20": 1.92,
+      "21": 1.64,
+      "22": 1.35,
+      "23": 1.07
     },
     "modes": {
       "0": "charging",
@@ -520,17 +520,17 @@
       "2": "charging",
       "3": "discharging",
       "4": "charging",
-      "5": "discharging",
+      "5": "charging",
       "6": "charging",
-      "7": "discharging",
-      "8": "charging",
-      "9": "charging",
+      "7": "charging",
+      "8": "discharging",
+      "9": "discharging",
       "10": "charging",
       "11": "charging",
       "12": "charging",
-      "13": "discharging",
+      "13": "charging",
       "14": "charging",
-      "15": "charging",
+      "15": "discharging",
       "16": "discharging",
       "17": "discharging",
       "18": "discharging",
@@ -542,9 +542,9 @@
     },
     "summary": {
       "initial_level": 0.5,
-      "final_level": 0.5,
-      "min_level": 0.5,
-      "max_level": 2.78,
+      "final_level": 1.07,
+      "min_level": 0.78,
+      "max_level": 3.06,
       "charge_cycles": 12,
       "discharge_cycles": 12
     }
@@ -556,16 +556,16 @@
       "2": 0.45,
       "3": 0,
       "4": 0.45,
-      "5": 0,
-      "6": 0.45,
+      "5": 0.45,
+      "6": 2.15,
       "7": 0,
-      "8": 0.55,
-      "9": 0.29,
+      "8": 0,
+      "9": 0,
       "10": 0.02,
-      "11": 4.08,
+      "11": 0,
       "12": 2.82,
-      "13": 2.22,
-      "14": 0,
+      "13": 2.82,
+      "14": 3.35,
       "15": 0,
       "16": 0,
       "17": 2.17,
@@ -608,16 +608,16 @@
       "2": 0.3,
       "3": 0.0,
       "4": 0.3,
-      "5": 0.0,
+      "5": 0.3,
       "6": 0.3,
       "7": 0.0,
-      "8": 0.3,
-      "9": 0.29,
+      "8": 0.0,
+      "9": 0.0,
       "10": 0.02,
-      "11": 0.3,
+      "11": 0.0,
       "12": 0.3,
-      "13": 0.0,
-      "14": 0.0,
+      "13": 0.3,
+      "14": 0.3,
       "15": 0.0,
       "16": 0.0,
       "17": 0.0,
@@ -634,15 +634,15 @@
       "2": 0.0,
       "3": 0.15,
       "4": 0.0,
-      "5": 0.15,
+      "5": 0.0,
       "6": 0.0,
-      "7": 0.11,
-      "8": 0.0,
+      "7": 0.0,
+      "8": 0.25,
       "9": 0.0,
       "10": 0.0,
       "11": 0.0,
       "12": 0.0,
-      "13": 0.3,
+      "13": 0.0,
       "14": 0.0,
       "15": 0.0,
       "16": 0.0,
@@ -656,28 +656,34 @@
     }
   },
   "savings": {
-    "daily": 2.64,
-    "monthly": 79.1,
-    "yearly": 962.7
+    "daily": 2.67,
+    "monthly": 80.2,
+    "yearly": 975.18
   },
   "recommendations": [
     {
       "period": "Morning (6:00 - 12:00)",
       "emoji": "\u2600\ufe0f",
       "appliances": [
-        "Run Dishwasher at 09:00-10:00",
-        "Run Washing Machine at 07:00-08:00",
+        "Run Dishwasher at 06:00-07:00",
+        "Run Washing Machine at 06:00-07:00",
         "Run Dryer at 08:00-09:00",
-        "Run EV Charger at 11:00-14:00",
         "Run Water Heater at 10:00-12:00"
+      ]
+    },
+    {
+      "period": "Afternoon (12:00 - 18:00)",
+      "emoji": "\ud83c\udf24\ufe0f",
+      "appliances": [
+        "Run EV Charger at 12:00-15:00"
       ]
     },
     {
       "period": "Battery Management",
       "emoji": "\ud83d\udd0b",
       "appliances": [
-        "Charge battery during hours: 00:00, 01:00, 02:00, 04:00, 06:00, 08:00, 09:00, 10:00, 11:00, 12:00, 14:00, 15:00",
-        "Use battery power during hours: 03:00, 05:00, 07:00, 13:00, 16:00, 17:00, 18:00, 19:00, 20:00, 21:00, 22:00, 23:00"
+        "Charge battery during hours: 00:00, 01:00, 02:00, 04:00, 05:00, 06:00, 07:00, 10:00, 11:00, 12:00, 13:00, 14:00",
+        "Use battery power during hours: 03:00, 08:00, 09:00, 15:00, 16:00, 17:00, 18:00, 19:00, 20:00, 21:00, 22:00, 23:00"
       ]
     }
   ]

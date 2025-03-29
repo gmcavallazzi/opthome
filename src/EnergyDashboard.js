@@ -1,7 +1,10 @@
+// src/EnergyDashboard.js
 import React, { useState, useEffect } from 'react';
 import { Sun, Home, Power, PieChart, Settings } from 'lucide-react';
 import { hourlyData, defaultAppliances, formatCurrency } from './utils/mockData';
 import { exportAppliancesToPython, importOptimizedSchedule, saveAppliancesToLocalStorage, ExportToPythonButton, ImportScheduleButton } from './services/ApplianceExporter';
+import { OptimizeButton, runOptimization } from './services/OptimizationService';
+import { OptimizationProgress, OptimizationSuccess } from './components/optimization/OptimizationUI';
 import EnergyCharts from './components/EnergyCharts';
 import OptimizationResults from './components/OptimizationResults';
 import ApplianceForm from './components/forms/ApplianceForm';
@@ -33,6 +36,8 @@ const EnergyDashboard = () => {
   const [editingApplianceId, setEditingApplianceId] = useState(null);
   const [selectedHours, setSelectedHours] = useState([]);
   const [solarEnabled, setSolarEnabled] = useState(true);
+  const [optimizationRunning, setOptimizationRunning] = useState(false);
+  const [optimizationSuccess, setOptimizationSuccess] = useState(null);
   const [newApplianceData, setNewApplianceData] = useState({
     name: "",
     power: 0,
@@ -171,6 +176,30 @@ const EnergyDashboard = () => {
         return app;
       });
       setUserAppliances(updatedUserAppliances);
+    }
+  };
+  
+  // Handle optimization
+  const handleOptimization = async () => {
+    setOptimizationRunning(true);
+    try {
+      const result = await runOptimization(
+        appliances, 
+        userAppliances, 
+        solarEnabled, 
+        energySettings
+      );
+      setOptimizedSchedule(result);
+      setOptimizationSuccess(result);
+      
+      // Update appliances with optimized schedule if available
+      if (result && result.optimized_appliances) {
+        handleScheduleImport(result);
+      }
+    } catch (error) {
+      console.error("Optimization failed:", error);
+    } finally {
+      setOptimizationRunning(false);
     }
   };
   
@@ -328,6 +357,15 @@ const EnergyDashboard = () => {
   
   return (
     <div className="dashboard-container">
+      {/* Optimization progress & success notifications */}
+      <OptimizationProgress isRunning={optimizationRunning} />
+      {optimizationSuccess && (
+        <OptimizationSuccess 
+          result={optimizationSuccess} 
+          onClose={() => setOptimizationSuccess(null)} 
+        />
+      )}
+      
       {/* Header */}
       <div className="header">
         <div className="header-content">
@@ -335,25 +373,35 @@ const EnergyDashboard = () => {
             <span className="icon"><Home size={20} /></span> 
             Home Energy Optimization Dashboard
           </h1>
-          <div className="solar-toggle">
-            <span>Solar Panels:</span>
-            <button 
-              onClick={() => {
-                const newSolarState = !solarEnabled;
-                setSolarEnabled(newSolarState);
-                // Export to Python after toggling solar
-                saveAppliancesToLocalStorage(appliances, userAppliances, newSolarState, energySettings);
-              }}
-              className={`toggle-button ${solarEnabled ? 'toggle-on' : 'toggle-off'}`}
-            >
-              <span className="toggle-slider"></span>
-              {solarEnabled ? 
-                <Sun size={12} className="toggle-icon" /> : 
-                <Sun size={12} className="toggle-icon toggle-icon-off" />
-              }
-            </button>
-            {/* Python Export buttons */}
-            <div className="ml-4">
+          <div className="header-controls">
+            <div className="solar-toggle">
+              <span>Solar Panels:</span>
+              <button 
+                onClick={() => {
+                  const newSolarState = !solarEnabled;
+                  setSolarEnabled(newSolarState);
+                  // Export to Python after toggling solar
+                  saveAppliancesToLocalStorage(appliances, userAppliances, newSolarState, energySettings);
+                }}
+                className={`toggle-button ${solarEnabled ? 'toggle-on' : 'toggle-off'}`}
+              >
+                <span className="toggle-slider"></span>
+                {solarEnabled ? 
+                  <Sun size={12} className="toggle-icon" /> : 
+                  <Sun size={12} className="toggle-icon toggle-icon-off" />
+                }
+              </button>
+            </div>
+            {/* Buttons for export, import and optimize */}
+            <div className="header-buttons">
+              <OptimizeButton 
+                appliances={appliances}
+                userAppliances={userAppliances}
+                solarEnabled={solarEnabled}
+                energySettings={energySettings}
+                onOptimizationComplete={handleScheduleImport}
+                isRunning={optimizationRunning}
+              />
               <ExportToPythonButton 
                 appliances={appliances} 
                 userAppliances={userAppliances} 
