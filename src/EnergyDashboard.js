@@ -78,7 +78,7 @@ const EnergyDashboard = () => {
   // Calculate data based on solar status
   const calculateData = () => {
     let data = hourlyData;
-    
+  
     if (!solarEnabled) {
       // Create a version with no solar production and adjusted optimal costs
       data = hourlyData.map(hour => ({
@@ -90,35 +90,44 @@ const EnergyDashboard = () => {
         batteryCharge: Math.max(20, hour.batteryCharge * 0.5)
       }));
     }
-    
-    // If we have an optimized schedule, update the optimalCost values
+  
+    // If we have an optimized schedule, update the optimalCost values and battery charge
     if (optimizedSchedule && optimizedSchedule.daily_schedule) {
       return data.map((hour, index) => {
         const hourKey = index.toString();
-        
+      
         // If we have data for this hour in the optimized schedule
         if (hourKey in optimizedSchedule.daily_schedule) {
           const hourSchedule = optimizedSchedule.daily_schedule[hourKey];
-          
+        
           // Calculate total power for this hour
           const totalPower = hourSchedule.reduce((sum, app) => sum + app.power, 0) / 1000; // convert to kW
-          
+        
           // Calculate new optimal cost based on power consumption
           const newOptimalCost = totalPower * hour.gridCost;
-          
+        
+          // Get battery level from optimized schedule if available
+          const batteryLevel = optimizedSchedule.battery && 
+                              optimizedSchedule.battery.hourly_state && 
+                              optimizedSchedule.battery.hourly_state[hourKey] ?
+                              // Convert to percentage (assuming max level is 3.5 kWh from the Python code)
+                              (optimizedSchedule.battery.hourly_state[hourKey] / 3.5) * 100 :
+                              hour.batteryCharge;
+        
           return {
             ...hour,
-            optimizedCost: newOptimalCost // Add a new property for the optimized cost
+            optimizedCost: newOptimalCost, // Add a new property for the optimized cost
+            batteryCharge: batteryLevel    // Update battery charge from optimization
           };
         }
-        
+      
         return {
           ...hour,
           optimizedCost: hour.optimalCost // Default to current optimal cost if no optimized data
         };
       });
     }
-    
+  
     return data;
   };
   

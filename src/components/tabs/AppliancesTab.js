@@ -36,7 +36,7 @@ const AppliancesTab = ({
             <ResponsiveContainer width="100%" height={400}>
               <BarChart
                 data={[...appliances, ...userAppliances]}
-                margin={{ top: 20, right: 30, left: 50, bottom: 70 }}
+                margin={{ top: 20, right: 30, left: 50, bottom: 80 }} // Increased bottom margin
               >
                 <CartesianGrid strokeDasharray="3 3" opacity={0.2} />
                 <XAxis 
@@ -45,10 +45,10 @@ const AppliancesTab = ({
                   interval={0} 
                   angle={-45} 
                   textAnchor="end" 
-                  height={60} 
+                  height={80} // Increased height for better x-axis label spacing
                 />
                 <YAxis 
-                  label={{ value: 'Power (Watts)', angle: -90, position: 'insideLeft' }} 
+                  label={{ value: 'Power (Watts)', angle: -90, position: 'insideLeft', offset: -35 }} 
                   tick={{ fontSize: 12 }}
                 />
                 <Tooltip 
@@ -64,10 +64,10 @@ const AppliancesTab = ({
               </BarChart>
             </ResponsiveContainer>
           </div>
-          
+    
           <div className="appliance-stats-summary">
-            <h4>Appliance Usage Summary</h4>
-            <div className="appliance-stats-details">
+            <h4 className="stats-title">Appliance Usage Summary</h4>
+            <div className="appliance-stats-grid">
               <div className="appliance-stat-item">
                 <span className="stat-label">Total Appliances:</span>
                 <span className="stat-value">{appliances.length + userAppliances.length}</span>
@@ -84,16 +84,20 @@ const AppliancesTab = ({
                   {appliances.concat(userAppliances).filter(app => !app.flexible).length}
                 </span>
               </div>
-              <div className="appliance-stat-item">
+              <div className="appliance-stat-item max-power-item">
                 <span className="stat-label">Maximum Power Device:</span>
-                <span className="stat-value">
-                  {appliances.concat(userAppliances).reduce((max, app) => 
-                    app.power > max.power ? app : max
-                  , {name: 'None', power: 0}).name} 
-                  ({appliances.concat(userAppliances).reduce((max, app) => 
-                    app.power > max.power ? app : max
-                  , {name: 'None', power: 0}).power} W)
-                </span>
+                <div className="max-power-value">
+                  <span className="device-name">
+                    {appliances.concat(userAppliances).reduce((max, app) => 
+                      app.power > max.power ? app : max
+                    , {name: 'None', power: 0}).name}
+                  </span>
+                  <span className="device-power">
+                    ({appliances.concat(userAppliances).reduce((max, app) => 
+                      app.power > max.power ? app : max
+                    , {name: 'None', power: 0}).power} W)
+                  </span>
+                </div>
               </div>
             </div>
           </div>
