@@ -1,7 +1,8 @@
-import React from 'react';
+// src/components/forms/HourRestrictionsForm.js
+import React, { useEffect } from 'react';
 
 /**
- * Form for setting specific hours for an appliance
+ * Enhanced form for setting specific hours for an appliance
  */
 const HourRestrictionsForm = ({ 
   editingAppliance, 
@@ -10,6 +11,23 @@ const HourRestrictionsForm = ({
   onSave, 
   onClose 
 }) => {
+  // Make sure we have the latest optimal hours when the form opens
+  useEffect(() => {
+    if (editingAppliance && editingAppliance.optimalHours) {
+      setSelectedHours([...editingAppliance.optimalHours]);
+    }
+  }, [editingAppliance, setSelectedHours]);
+
+  // Toggle selection of an hour
+  const toggleHour = (hour) => {
+    if (selectedHours.includes(hour)) {
+      setSelectedHours(selectedHours.filter(h => h !== hour));
+    } else {
+      // Add the hour and sort the array
+      setSelectedHours([...selectedHours, hour].sort((a, b) => a - b));
+    }
+  };
+
   if (!editingAppliance) return null;
   
   return (
@@ -37,13 +55,7 @@ const HourRestrictionsForm = ({
                         ? 'hour-selected' 
                         : ''
                     }`}
-                    onClick={() => {
-                      if (selectedHours.includes(i)) {
-                        setSelectedHours(selectedHours.filter(h => h !== i));
-                      } else {
-                        setSelectedHours([...selectedHours, i]);
-                      }
-                    }}
+                    onClick={() => toggleHour(i)}
                   >
                     {i}
                   </div>

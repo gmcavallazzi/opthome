@@ -1,6 +1,7 @@
-import React from 'react';
+// src/components/dashboard/ApplianceSchedule.js
+import React, { useState, useEffect } from 'react';
 import { Power } from 'lucide-react';
-import { formatCurrency } from '../../utils/goodData';  // Fixed path with double dots
+import { formatCurrency } from '../../utils/goodData';
 import { Card, CardHeader, CardTitle, CardContent } from '../ui/UIComponents';
 
 /**
@@ -17,6 +18,39 @@ const ApplianceSchedule = ({
   // Combine both built-in and user appliances
   const allAppliances = [...appliances, ...userAppliances];
   
+  // Internal state to ensure hour updates are immediately reflected
+  const [localSelectedHours, setLocalSelectedHours] = useState([]);
+  
+  // Update local hours when selectedAppliance changes
+  useEffect(() => {
+    if (selectedAppliance) {
+      setLocalSelectedHours(selectedAppliance.optimalHours || []);
+    }
+  }, [selectedAppliance]);
+
+  // Calculate estimated savings
+  const calculateSavings = (appliance) => {
+    // Simple calculation based on power consumption and rate difference
+    const peakRate = 0.30; // Peak rate in €/kWh
+    const offPeakRate = 0.10; // Off-peak rate in €/kWh
+    
+    // Calculate consumption in kWh
+    const consumption = (appliance.power / 1000) * appliance.runDuration;
+    
+    // Calculate cost difference
+    return consumption * (peakRate - offPeakRate);
+  };
+  
+  // Handle customize hours button click with immediate local update
+  const handleCustomizeHours = (applianceId) => {
+    // Update local state first for immediate visual feedback
+    if (selectedAppliance) {
+      setLocalSelectedHours(selectedAppliance.optimalHours || []);
+    }
+    // Then call the parent handler
+    handleSetSpecificHours(applianceId);
+  };
+  
   return (
     <Card className="appliance-card">
       <CardHeader>
@@ -25,7 +59,7 @@ const ApplianceSchedule = ({
       
       <CardContent>
         <div className="appliance-grid">
-          <div className="appliance-list" style={{ width: '35%', minWidth: '250px' }}>
+          <div className="appliance-list">
             <div className="appliance-header">
               <h3>Select Appliance</h3>
               <button 
@@ -60,7 +94,7 @@ const ApplianceSchedule = ({
             </div>
           </div>
           
-          <div className="appliance-detail-container" style={{ width: '65%' }}>
+          <div className="appliance-detail-container">
           {selectedAppliance ? (
             <div className="appliance-detail">
               <h3 className="appliance-detail-title">
@@ -72,7 +106,7 @@ const ApplianceSchedule = ({
                 <div className="hours-grid">
                   {[...Array(24)].map((_, i) => (
                     <div 
-                      key={i} 
+                      key={`current-${i}`} 
                       className={`hour-cell ${selectedAppliance.currentHours.includes(i) ? 'current-hour' : ''}`}
                     >
                       {i}
@@ -85,7 +119,7 @@ const ApplianceSchedule = ({
                 <div className="hours-grid">
                   {[...Array(24)].map((_, i) => (
                     <div 
-                      key={i} 
+                      key={`optimal-${i}`} 
                       className={`hour-cell ${selectedAppliance.optimalHours.includes(i) ? 'optimal-hour' : ''}`}
                     >
                       {i}
@@ -104,14 +138,14 @@ const ApplianceSchedule = ({
                 </p>
                 {selectedAppliance.flexible && (
                   <div className="savings-estimate">
-                    Estimated daily savings: {formatCurrency((selectedAppliance.power / 1000) * selectedAppliance.runDuration * (0.35 - 0.10))}
+                    Estimated daily savings: {formatCurrency(calculateSavings(selectedAppliance))}
                   </div>
                 )}
                 
                 {selectedAppliance.flexible && (
                   <button 
                     className="set-hours-button"
-                    onClick={() => handleSetSpecificHours(selectedAppliance.id)}
+                    onClick={() => handleCustomizeHours(selectedAppliance.id)}
                   >
                     Customize Hours
                   </button>

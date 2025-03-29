@@ -299,7 +299,8 @@ const EnergyDashboard = () => {
     const appliance = allAppliances.find(a => a.id === applianceId);
     
     if (appliance) {
-      setSelectedHours(appliance.optimalHours || []);
+      // Initialize with the current optimal hours
+      setSelectedHours([...appliance.optimalHours] || []);
     } else {
       setSelectedHours([]);
     }
@@ -310,25 +311,44 @@ const EnergyDashboard = () => {
   
   // Handle updating an appliance's hours
   const handleUpdateApplianceHours = () => {
+    // Only proceed if we have a valid appliance ID
+    if (!editingApplianceId) return;
+    
+    // Sort selected hours for consistency
+    const sortedHours = [...selectedHours].sort((a, b) => a - b);
+
     // Find if it's a system appliance or user appliance
     const isSystemAppliance = appliances.some(app => app.id === editingApplianceId);
     
     if (isSystemAppliance) {
       // Update system appliance
-      setAppliances(appliances.map(app => 
+      const updatedAppliances = appliances.map(app => 
         app.id === editingApplianceId 
-          ? {...app, optimalHours: selectedHours} 
+          ? {...app, optimalHours: sortedHours} 
           : app
-      ));
+      );
+      setAppliances(updatedAppliances);
+      
+      // Also update selectedAppliance if this is the one currently selected
+      if (selectedAppliance && selectedAppliance.id === editingApplianceId) {
+        setSelectedAppliance({...selectedAppliance, optimalHours: sortedHours});
+      }
     } else {
       // Update user appliance
-      setUserAppliances(userAppliances.map(app => 
+      const updatedUserAppliances = userAppliances.map(app => 
         app.id === editingApplianceId 
-          ? {...app, optimalHours: selectedHours} 
+          ? {...app, optimalHours: sortedHours} 
           : app
-      ));
+      );
+      setUserAppliances(updatedUserAppliances);
+      
+      // Also update selectedAppliance if this is the one currently selected
+      if (selectedAppliance && selectedAppliance.id === editingApplianceId) {
+        setSelectedAppliance({...selectedAppliance, optimalHours: sortedHours});
+      }
     }
     
+    // Close form and reset editing state
     setShowHourRestrictionsForm(false);
     setEditingApplianceId(null);
   };
@@ -520,17 +540,17 @@ const EnergyDashboard = () => {
         )}
         
         {showHourRestrictionsForm && (
-          <HourRestrictionsForm
-            editingAppliance={findEditingAppliance()}
-            selectedHours={selectedHours}
-            setSelectedHours={setSelectedHours}
-            onSave={handleUpdateApplianceHours}
-            onClose={() => {
-              setShowHourRestrictionsForm(false);
-              setEditingApplianceId(null);
-            }}
-          />
-        )}
+        <HourRestrictionsForm
+          editingAppliance={findEditingAppliance()}
+          selectedHours={selectedHours}
+          setSelectedHours={setSelectedHours}
+          onSave={handleUpdateApplianceHours}
+          onClose={() => {
+            setShowHourRestrictionsForm(false);
+            setEditingApplianceId(null);
+          }}
+        />
+      )}
       </div>
     </div>
   );
