@@ -1,6 +1,6 @@
 import React from 'react';
 import { Power } from 'lucide-react';
-import { formatCurrency } from '../../utils/mockData';  // Fixed path with double dots
+import { formatCurrency } from '../../utils/goodData';  // Fixed path with double dots
 import { Card, CardHeader, CardTitle, CardContent } from '../ui/UIComponents';
 
 /**

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Battery, Sun, Zap, DollarSign } from 'lucide-react';
-import { formatCurrency } from '../../utils/mockData';  // Fixed path with double dots
+import { formatCurrency } from '../../utils/goodData';  // Fixed path with double dots
 
 /**
  * StatsGrid component displays key metrics in a grid layout

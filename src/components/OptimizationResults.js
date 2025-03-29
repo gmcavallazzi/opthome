@@ -1,6 +1,6 @@
 import React from 'react';
 import { Sun, Clock, Check, X } from 'lucide-react';
-import { formatCurrency } from '../utils/mockData';
+import { formatCurrency } from '../utils/goodData';
 import { Card, CardHeader, CardTitle, CardContent } from './ui/UIComponents';
 
 const OptimizationResults = ({ optimizedSchedule }) => {

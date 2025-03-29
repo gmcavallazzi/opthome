@@ -11,7 +11,8 @@
         20
       ],
       "preferred_hours": [
-        12
+        19,
+        20
       ],
       "priority_level": "medium",
       "preferred_time_of_day": [
@@ -28,7 +29,7 @@
         18
       ],
       "preferred_hours": [
-        12
+        18
       ],
       "priority_level": "medium",
       "preferred_time_of_day": [
@@ -45,7 +46,7 @@
         19
       ],
       "preferred_hours": [
-        12
+        19
       ],
       "priority_level": "medium",
       "preferred_time_of_day": [
@@ -64,9 +65,9 @@
         20
       ],
       "preferred_hours": [
-        11,
-        12,
-        13
+        18,
+        19,
+        20
       ],
       "priority_level": "medium",
       "preferred_time_of_day": [
@@ -84,8 +85,8 @@
         18
       ],
       "preferred_hours": [
-        11,
-        12
+        17,
+        18
       ],
       "priority_level": "medium",
       "preferred_time_of_day": [
@@ -196,5 +197,5 @@
     },
     "solar_enabled": true
   },
-  "timestamp": "2025-03-29T16:59:33.322Z"
+  "timestamp": "2025-03-29T17:43:30.524Z"
 }

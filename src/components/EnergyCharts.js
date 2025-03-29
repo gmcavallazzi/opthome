@@ -1,7 +1,7 @@
 import React from 'react';
 import { ComposedChart, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, Area, Line, Bar } from 'recharts';
 import { DollarSign, Sun } from 'lucide-react';
-import { formatCurrency } from '../utils/mockData';
+import { formatCurrency } from '../utils/goodData';
 import { Card, CardHeader, CardTitle, CardContent } from './ui/UIComponents';
 
 const EnergyCharts = ({ currentData, solarEnabled, optimizedSchedule, totalStandardCost }) => {
