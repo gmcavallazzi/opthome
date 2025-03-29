@@ -1,0 +1,657 @@
+/* 
+  components.css
+  Contains styles for specific components extracted from EnergyDashboard.css
+*/
+
+/* Toggle component */
+.toggle-container {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  
+  .toggle-label {
+    font-size: 0.875rem;
+  }
+  
+  .toggle-button {
+    position: relative;
+    width: 3rem;
+    height: 1.5rem;
+    border-radius: 9999px;
+    background-color: #9ca3af;
+    cursor: pointer;
+    border: none;
+    transition: background-color 0.2s;
+  }
+  
+  .toggle-on {
+    background-color: #22c55e;
+  }
+  
+  .toggle-off {
+    background-color: #9ca3af;
+  }
+  
+  .toggle-slider {
+    position: absolute;
+    left: 0.25rem;
+    top: 0.25rem;
+    width: 1rem;
+    height: 1rem;
+    background-color: white;
+    border-radius: 50%;
+    transition: transform 0.2s;
+  }
+  
+  .toggle-on .toggle-slider {
+    transform: translateX(1.5rem);
+  }
+  
+  .toggle-icon {
+    position: absolute;
+    left: 0.375rem;
+    top: 0.375rem;
+    color: #fbbf24;
+  }
+  
+  .toggle-icon-off {
+    color: #6b7280;
+  }
+  
+  /* StatsGrid component */
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  @media (min-width: 640px) {
+    .stats-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  
+  @media (min-width: 1024px) {
+    .stats-grid {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+  
+  .stat-card {
+    background-color: white;
+    border-radius: 0.5rem;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    padding: 1rem;
+  }
+  
+  .stat-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+  
+  .stat-label {
+    font-size: 0.875rem;
+    color: #6b7280;
+    margin-bottom: 0.25rem;
+  }
+  
+  .stat-value {
+    font-size: 1.5rem;
+    font-weight: bold;
+    line-height: 1.2;
+  }
+  
+  .savings-value {
+    color: #10b981;
+  }
+  
+  .grid-value {
+    color: #3b82f6;
+  }
+  
+  .solar-value {
+    color: #f59e0b;
+  }
+  
+  .battery-value {
+    color: #8b5cf6;
+  }
+  
+  .stat-icon {
+    height: 3rem;
+    width: 3rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 9999px;
+  }
+  
+  .savings-icon {
+    background-color: #d1fae5;
+    color: #10b981;
+  }
+  
+  .grid-icon {
+    background-color: #dbeafe;
+    color: #3b82f6;
+  }
+  
+  .solar-icon {
+    background-color: #fef3c7;
+    color: #f59e0b;
+  }
+  
+  .battery-icon {
+    background-color: #ede9fe;
+    color: #8b5cf6;
+  }
+  
+  .stat-details {
+    font-size: 0.75rem;
+    color: #6b7280;
+    margin-top: 0.5rem;
+  }
+  
+  /* ApplianceSchedule component */
+  .appliance-card {
+    margin-bottom: 1.5rem;
+  }
+  
+  .appliance-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  
+  @media (min-width: 768px) {
+    .appliance-grid {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+  
+  .appliance-list {
+    border: 1px solid #e5e7eb;
+    border-radius: 0.375rem;
+    padding: 1rem;
+  }
+  
+  .appliance-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.75rem;
+  }
+  
+  .appliance-header h3 {
+    font-size: 1rem;
+    font-weight: 500;
+  }
+  
+  .add-button {
+    font-size: 0.75rem;
+    padding: 0.25rem 0.5rem;
+    background-color: #dbeafe;
+    color: #1d4ed8;
+    border: none;
+    border-radius: 0.25rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+  }
+  
+  .add-icon {
+    width: 12px;
+    height: 12px;
+    margin-right: 0.25rem;
+    stroke: currentColor;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    fill: none;
+  }
+  
+  .add-button:hover {
+    background-color: #bfdbfe;
+  }
+  
+  .appliance-items {
+    max-height: 18rem;
+    overflow-y: auto;
+  }
+  
+  .appliance-item {
+    padding: 0.5rem;
+    border-radius: 0.25rem;
+    cursor: pointer;
+    margin-bottom: 0.5rem;
+    background-color: #f9fafb;
+    transition: background-color 0.2s;
+  }
+  
+  .appliance-item:hover {
+    background-color: #f3f4f6;
+  }
+  
+  .selected-appliance {
+    background-color: #dbeafe;
+    border: 1px solid #93c5fd;
+  }
+  
+  .appliance-item-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .appliance-name {
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+  }
+  
+  .appliance-emoji {
+    margin-right: 0.5rem;
+  }
+  
+  .appliance-power {
+    font-size: 0.75rem;
+    color: #6b7280;
+  }
+  
+  .appliance-flexibility {
+    font-size: 0.75rem;
+    color: #6b7280;
+  }
+  
+  .appliance-detail {
+    border: 1px solid #e5e7eb;
+    border-radius: 0.375rem;
+    padding: 1rem;
+  }
+  
+  .appliance-placeholder {
+    border: 1px solid #e5e7eb;
+    border-radius: 0.375rem;
+    padding: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #6b7280;
+    font-size: 0.875rem;
+    background-color: #f9fafb;
+  }
+  
+  .appliance-detail-title {
+    font-size: 1rem;
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+    display: flex;
+    align-items: center;
+  }
+  
+  .schedule-section {
+    margin-bottom: 1rem;
+  }
+  
+  .schedule-label {
+    font-size: 0.875rem;
+    margin-bottom: 0.25rem;
+  }
+  
+  .hours-grid {
+    display: flex;
+    overflow-x: auto;
+    padding-bottom: 0.5rem;
+  }
+  
+  .hour-cell {
+    width: 2rem;
+    height: 2rem;
+    border: 1px solid #e5e7eb;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    flex-shrink: 0;
+    background-color: #f9fafb;
+    color: #9ca3af;
+  }
+  
+  .current-hour {
+    background-color: #fee2e2;
+    color: #b91c1c;
+  }
+  
+  .optimal-hour {
+    background-color: #d1fae5;
+    color: #065f46;
+  }
+  
+  .recommendation {
+    padding: 0.75rem;
+    background-color: #dbeafe;
+    border-radius: 0.375rem;
+  }
+  
+  .recommendation-title {
+    font-weight: 500;
+    font-size: 0.875rem;
+    color: #1e40af;
+    margin-bottom: 0.25rem;
+  }
+  
+  .recommendation-text {
+    font-size: 0.875rem;
+    color: #1e40af;
+  }
+  
+  .savings-estimate {
+    margin-top: 0.5rem;
+    font-weight: 500;
+    font-size: 0.875rem;
+    color: #047857;
+  }
+  
+  .set-hours-button {
+    display: inline-block;
+    margin-top: 0.75rem;
+    font-size: 0.875rem;
+    padding: 0.375rem 0.75rem;
+    background-color: #1e40af;
+    color: white;
+    border: none;
+    border-radius: 0.25rem;
+    cursor: pointer;
+  }
+  
+  .set-hours-button:hover {
+    background-color: #1e3a8a;
+  }
+  
+  /* Form Components */
+  .modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 50;
+  }
+  
+  .modal-container {
+    background-color: white;
+    border-radius: 0.5rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    max-width: 32rem;
+    width: 100%;
+    max-height: 90vh;
+    overflow-y: auto;
+  }
+  
+  .modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    border-bottom: 1px solid #e5e7eb;
+  }
+  
+  .modal-header h3 {
+    font-size: 1.125rem;
+    font-weight: 600;
+    margin: 0;
+  }
+  
+  .close-button {
+    background: none;
+    border: none;
+    color: #6b7280;
+    font-size: 1.25rem;
+    cursor: pointer;
+    padding: 0.25rem;
+  }
+  
+  .close-button:hover {
+    color: #1f2937;
+  }
+  
+  .modal-content {
+    padding: 1rem;
+  }
+  
+  .form-group {
+    margin-bottom: 1rem;
+  }
+  
+  .form-group label {
+    display: block;
+    font-size: 1rem;
+    font-weight: 500;
+    color: #374151;
+    margin-bottom: 0.75rem;
+  }
+  
+  .form-input, .form-select {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #d1d5db;
+    border-radius: 0.5rem;
+    font-size: 1rem;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+  }
+  
+  .form-actions {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid #e5e7eb;
+  }
+  
+  .button {
+    padding: 0.5rem 1rem;
+    border-radius: 0.375rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+    cursor: pointer;
+    border: none;
+  }
+  
+  .button-primary {
+    background-color: #3b82f6;
+    color: white;
+    font-weight: 500;
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+    border-radius: 0.5rem;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.2s;
+  }
+  
+  .button-primary:hover {
+    background-color: #2563eb;
+  }
+  
+  .button-secondary {
+    background-color: white;
+    color: #4b5563;
+    font-weight: 500;
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+    border-radius: 0.5rem;
+    border: 1px solid #d1d5db;
+    cursor: pointer;
+    transition: background-color 0.2s;
+  }
+  
+  .button-secondary:hover {
+    background-color: #f9fafb;
+  }
+  
+  /* Chart and solar/battery styles for EnergyTab */
+  .chart-container {
+    height: 300px;
+    width: 100%;
+  }
+  
+  .solar-summary, .battery-strategy, .price-analysis {
+    margin-top: 1rem;
+    padding: 0.75rem;
+    border-radius: 0.375rem;
+    font-size: 0.875rem;
+  }
+  
+  .solar-summary {
+    background-color: #fef3c7;
+  }
+  
+  .battery-strategy {
+    background-color: #ede9fe;
+  }
+  
+  .price-analysis {
+    background-color: #dbeafe;
+  }
+  
+  .solar-summary-title, .battery-strategy-title, .price-analysis-title {
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+  }
+  
+  .solar-summary-title {
+    color: #92400e;
+  }
+  
+  .battery-strategy-title {
+    color: #5b21b6;
+  }
+  
+  .price-analysis-title {
+    color: #1e40af;
+  }
+  
+  .solar-summary-item, .battery-strategy-item {
+    margin-bottom: 0.25rem;
+  }
+  
+  .solar-summary-item {
+    color: #92400e;
+  }
+  
+  .battery-strategy-item {
+    color: #5b21b6;
+  }
+  
+  .battery-strategy-list {
+    list-style: none;
+    margin: 0.25rem 0;
+  }
+  
+  .price-insights {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 0.75rem;
+    margin-bottom: 0.75rem;
+  }
+  
+  .price-insight-item {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .insight-label {
+    font-weight: 500;
+    color: #1e40af;
+    margin-bottom: 0.25rem;
+  }
+  
+  .insight-value {
+    color: #1e40af;
+  }
+  
+  .price-recommendation {
+    color: #1e40af;
+    font-weight: 500;
+    margin-top: 0.5rem;
+  }
+
+  .toggle-icon-off {
+    color: #6b7280;
+  }
+  
+  /* Header controls layout */
+  .header-controls {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+  
+  @media (max-width: 640px) {
+    .header-controls {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0.5rem;
+    }
+  }
+  
+  .header-buttons {
+    display: flex;
+    align-items: center;
+  }
+
+    /* Action buttons for Python export/import */
+.action-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.375rem 0.75rem;
+  border-radius: 0.375rem;
+  font-size: 0.75rem;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  border: none;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+  margin-left: 0.5rem;
+  color: white;
+}
+
+.action-button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.action-button:active {
+  transform: translateY(0);
+}
+
+.action-icon {
+  width: 0.875rem;
+  height: 0.875rem;
+  margin-right: 0.375rem;
+}
+
+.export-button {
+  background-color: #3b82f6;
+  border: 1px solid #2563eb;
+}
+
+.export-button:hover {
+  background-color: #2563eb;
+}
+
+.import-button {
+  background-color: #10b981;
+  border: 1px solid #059669;
+}
+
+.import-button:hover {
+  background-color: #059669;
+}

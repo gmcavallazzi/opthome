@@ -1,0 +1,15 @@
+2025-03-29 15:01:19,044 - optimizer - INFO - Successfully loaded appliance data from appliances_data.json
+2025-03-29 15:01:19,045 - optimizer - INFO - Optimizing appliance schedules...
+2025-03-29 15:01:19,048 - optimizer - INFO - Optimization results saved to optimized_schedule.json
+2025-03-29 15:01:19,048 - optimizer - INFO - Optimization complete! Saved results to optimized_schedule.json
+2025-03-29 15:01:19,048 - optimizer - INFO - Daily savings: €8.59, Monthly: €257.7
+2025-03-29 15:09:15,814 - optimizer - INFO - Successfully loaded appliance data from appliances_data.json
+2025-03-29 15:09:15,815 - optimizer - INFO - Optimizing appliance schedules...
+2025-03-29 15:09:15,819 - optimizer - INFO - Optimization results saved to optimized_schedule.json
+2025-03-29 15:09:15,819 - optimizer - INFO - Optimization complete! Saved results to optimized_schedule.json
+2025-03-29 15:09:15,819 - optimizer - INFO - Daily savings: €8.59, Monthly: €257.7
+2025-03-29 15:34:49,415 - optimizer - INFO - Successfully loaded appliance data from appliances_data.json
+2025-03-29 15:34:49,415 - optimizer - INFO - Optimizing appliance schedules...
+2025-03-29 15:34:49,418 - optimizer - INFO - Optimization results saved to optimized_schedule.json
+2025-03-29 15:34:49,418 - optimizer - INFO - Optimization complete! Saved results to optimized_schedule.json
+2025-03-29 15:34:49,418 - optimizer - INFO - Daily savings: €8.59, Monthly: €257.7

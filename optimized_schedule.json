@@ -1,0 +1,517 @@
+{
+  "timestamp": "2025-03-29T15:34:49.417716",
+  "optimized_appliances": {
+    "dishwasher": {
+      "id": 1,
+      "name": "Dishwasher",
+      "power": 1200,
+      "flexible": true,
+      "run_duration": 1.5,
+      "current_hours": [
+        19,
+        20
+      ],
+      "preferred_hours": [
+        2,
+        3,
+        4
+      ],
+      "priority_level": "medium",
+      "preferred_time_of_day": [
+        "Afternoon"
+      ],
+      "optimized_hours": [
+        12
+      ],
+      "estimated_savings": {
+        "current_cost": 0.49,
+        "optimal_cost": 0.02,
+        "savings": 0.48,
+        "percentage": 96.4
+      }
+    },
+    "washing_machine": {
+      "id": 2,
+      "name": "Washing Machine",
+      "power": 500,
+      "flexible": true,
+      "run_duration": 1,
+      "current_hours": [
+        18
+      ],
+      "preferred_hours": [
+        9,
+        10
+      ],
+      "priority_level": "medium",
+      "preferred_time_of_day": [
+        "Afternoon"
+      ],
+      "optimized_hours": [
+        12
+      ],
+      "estimated_savings": {
+        "current_cost": 0.12,
+        "optimal_cost": 0.01,
+        "savings": 0.11,
+        "percentage": 95.8
+      }
+    },
+    "dryer": {
+      "id": 3,
+      "name": "Dryer",
+      "power": 3000,
+      "flexible": true,
+      "run_duration": 1,
+      "current_hours": [
+        19
+      ],
+      "preferred_hours": [
+        13,
+        14
+      ],
+      "priority_level": "medium",
+      "preferred_time_of_day": [
+        "Afternoon"
+      ],
+      "optimized_hours": [
+        12
+      ],
+      "estimated_savings": {
+        "current_cost": 0.81,
+        "optimal_cost": 0.03,
+        "savings": 0.78,
+        "percentage": 96.3
+      }
+    },
+    "ev_charger": {
+      "id": 4,
+      "name": "EV Charger",
+      "power": 7200,
+      "flexible": true,
+      "run_duration": 3,
+      "current_hours": [
+        18,
+        19,
+        20
+      ],
+      "preferred_hours": [
+        1,
+        2,
+        3
+      ],
+      "priority_level": "medium",
+      "preferred_time_of_day": [
+        "Afternoon"
+      ],
+      "optimized_hours": [
+        11,
+        12,
+        13
+      ],
+      "estimated_savings": {
+        "current_cost": 5.69,
+        "optimal_cost": 0.4,
+        "savings": 5.29,
+        "percentage": 93.0
+      }
+    },
+    "water_heater": {
+      "id": 5,
+      "name": "Water Heater",
+      "power": 4500,
+      "flexible": true,
+      "run_duration": 2,
+      "current_hours": [
+        17,
+        18
+      ],
+      "preferred_hours": [
+        10,
+        11
+      ],
+      "priority_level": "medium",
+      "preferred_time_of_day": [
+        "Afternoon"
+      ],
+      "optimized_hours": [
+        11,
+        12
+      ],
+      "estimated_savings": {
+        "current_cost": 2.07,
+        "optimal_cost": 0.14,
+        "savings": 1.93,
+        "percentage": 93.5
+      }
+    },
+    "air_conditioner": {
+      "id": 6,
+      "name": "Air Conditioner",
+      "power": 3500,
+      "flexible": false,
+      "run_duration": 8,
+      "current_hours": [
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19
+      ],
+      "preferred_hours": [
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19
+      ],
+      "priority_level": "medium",
+      "preferred_time_of_day": [
+        "Afternoon"
+      ]
+    },
+    "refrigerator": {
+      "id": 7,
+      "name": "Refrigerator",
+      "power": 150,
+      "flexible": false,
+      "run_duration": 24,
+      "current_hours": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23
+      ],
+      "preferred_hours": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23
+      ],
+      "priority_level": "medium",
+      "preferred_time_of_day": [
+        "Afternoon"
+      ]
+    }
+  },
+  "daily_schedule": {
+    "0": [
+      {
+        "name": "Refrigerator",
+        "power": 150,
+        "flexible": false
+      }
+    ],
+    "1": [
+      {
+        "name": "Refrigerator",
+        "power": 150,
+        "flexible": false
+      }
+    ],
+    "2": [
+      {
+        "name": "Refrigerator",
+        "power": 150,
+        "flexible": false
+      }
+    ],
+    "3": [
+      {
+        "name": "Refrigerator",
+        "power": 150,
+        "flexible": false
+      }
+    ],
+    "4": [
+      {
+        "name": "Refrigerator",
+        "power": 150,
+        "flexible": false
+      }
+    ],
+    "5": [
+      {
+        "name": "Refrigerator",
+        "power": 150,
+        "flexible": false
+      }
+    ],
+    "6": [
+      {
+        "name": "Refrigerator",
+        "power": 150,
+        "flexible": false
+      }
+    ],
+    "7": [
+      {
+        "name": "Refrigerator",
+        "power": 150,
+        "flexible": false
+      }
+    ],
+    "8": [
+      {
+        "name": "Refrigerator",
+        "power": 150,
+        "flexible": false
+      }
+    ],
+    "9": [
+      {
+        "name": "Refrigerator",
+        "power": 150,
+        "flexible": false
+      }
+    ],
+    "10": [
+      {
+        "name": "Refrigerator",
+        "power": 150,
+        "flexible": false
+      }
+    ],
+    "11": [
+      {
+        "name": "EV Charger",
+        "power": 7200,
+        "flexible": true
+      },
+      {
+        "name": "Water Heater",
+        "power": 4500,
+        "flexible": true
+      },
+      {
+        "name": "Refrigerator",
+        "power": 150,
+        "flexible": false
+      }
+    ],
+    "12": [
+      {
+        "name": "Dishwasher",
+        "power": 1200,
+        "flexible": true
+      },
+      {
+        "name": "Washing Machine",
+        "power": 500,
+        "flexible": true
+      },
+      {
+        "name": "Dryer",
+        "power": 3000,
+        "flexible": true
+      },
+      {
+        "name": "EV Charger",
+        "power": 7200,
+        "flexible": true
+      },
+      {
+        "name": "Water Heater",
+        "power": 4500,
+        "flexible": true
+      },
+      {
+        "name": "Air Conditioner",
+        "power": 3500,
+        "flexible": false
+      },
+      {
+        "name": "Refrigerator",
+        "power": 150,
+        "flexible": false
+      }
+    ],
+    "13": [
+      {
+        "name": "EV Charger",
+        "power": 7200,
+        "flexible": true
+      },
+      {
+        "name": "Air Conditioner",
+        "power": 3500,
+        "flexible": false
+      },
+      {
+        "name": "Refrigerator",
+        "power": 150,
+        "flexible": false
+      }
+    ],
+    "14": [
+      {
+        "name": "Air Conditioner",
+        "power": 3500,
+        "flexible": false
+      },
+      {
+        "name": "Refrigerator",
+        "power": 150,
+        "flexible": false
+      }
+    ],
+    "15": [
+      {
+        "name": "Air Conditioner",
+        "power": 3500,
+        "flexible": false
+      },
+      {
+        "name": "Refrigerator",
+        "power": 150,
+        "flexible": false
+      }
+    ],
+    "16": [
+      {
+        "name": "Air Conditioner",
+        "power": 3500,
+        "flexible": false
+      },
+      {
+        "name": "Refrigerator",
+        "power": 150,
+        "flexible": false
+      }
+    ],
+    "17": [
+      {
+        "name": "Air Conditioner",
+        "power": 3500,
+        "flexible": false
+      },
+      {
+        "name": "Refrigerator",
+        "power": 150,
+        "flexible": false
+      }
+    ],
+    "18": [
+      {
+        "name": "Air Conditioner",
+        "power": 3500,
+        "flexible": false
+      },
+      {
+        "name": "Refrigerator",
+        "power": 150,
+        "flexible": false
+      }
+    ],
+    "19": [
+      {
+        "name": "Air Conditioner",
+        "power": 3500,
+        "flexible": false
+      },
+      {
+        "name": "Refrigerator",
+        "power": 150,
+        "flexible": false
+      }
+    ],
+    "20": [
+      {
+        "name": "Refrigerator",
+        "power": 150,
+        "flexible": false
+      }
+    ],
+    "21": [
+      {
+        "name": "Refrigerator",
+        "power": 150,
+        "flexible": false
+      }
+    ],
+    "22": [
+      {
+        "name": "Refrigerator",
+        "power": 150,
+        "flexible": false
+      }
+    ],
+    "23": [
+      {
+        "name": "Refrigerator",
+        "power": 150,
+        "flexible": false
+      }
+    ]
+  },
+  "savings": {
+    "daily": 8.59,
+    "monthly": 257.7,
+    "yearly": 3135.35
+  },
+  "recommendations": [
+    {
+      "period": "Morning (6:00 - 12:00)",
+      "emoji": "\u2600\ufe0f",
+      "appliances": [
+        "Run EV Charger at 11:00-14:00",
+        "Run Water Heater at 11:00-13:00"
+      ]
+    },
+    {
+      "period": "Afternoon (12:00 - 18:00)",
+      "emoji": "\ud83c\udf24\ufe0f",
+      "appliances": [
+        "Run Dishwasher at 12:00",
+        "Run Washing Machine at 12:00",
+        "Run Dryer at 12:00"
+      ]
+    }
+  ]
+}
