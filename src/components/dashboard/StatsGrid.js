@@ -17,7 +17,7 @@ const StatsGrid = ({ currentData, solarEnabled, savingsAmount, savingsPercentage
             <p className="stat-value savings-value">{formatCurrency(savingsAmount)}</p>
           </div>
           <div className="stat-icon savings-icon">
-            <DollarSign />
+            €
           </div>
         </div>
         <p className="stat-details">
