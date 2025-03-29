@@ -33,9 +33,9 @@ const EnergyCharts = ({ currentData, solarEnabled, optimizedSchedule, totalStand
     <div className="charts-grid">
       <Card className="chart-card">
         <CardHeader>
-          <CardTitle>
-            <DollarSign size={20} className="title-icon" /> Cost Comparison
-          </CardTitle>
+        <CardTitle>
+          <span className="title-icon" style={{ fontSize: '20px', marginRight: '0.5rem' }}>€</span> Cost Comparison
+        </CardTitle>
         </CardHeader>
         <CardContent>
           {currentData && currentData.length > 0 ? (
@@ -51,15 +51,18 @@ const EnergyCharts = ({ currentData, solarEnabled, optimizedSchedule, totalStand
                     tick={{ fontSize: 12 }} 
                     interval={3} 
                   />
-                  <YAxis tick={{ fontSize: 12 }} domain={[0, 1.5]} />
+                  <YAxis 
+                    tick={{ fontSize: 12 }} 
+                    tickFormatter={(value) => `€${value.toFixed(2)}`}
+                  />
                   <Tooltip content={renderTooltip} />
                   <Legend />
                   <Area 
                     type="monotone" 
                     dataKey="standardCost" 
                     name="Standard Usage (€)" 
-                    fill="#f87171" 
-                    stroke="#ef4444" 
+                    fill="#3b82f6" 
+                    stroke="#2563eb" 
                     activeDot={{ r: 6 }} 
                     fillOpacity={0.6}
                   />
@@ -68,8 +71,8 @@ const EnergyCharts = ({ currentData, solarEnabled, optimizedSchedule, totalStand
                       type="monotone" 
                       dataKey="optimizedCost" 
                       name="Python Optimized (€)" 
-                      fill="#10b981"
-                      stroke="#047857" 
+                      fill="#f59e0b"
+                      stroke="#d97706" 
                       strokeWidth={2}
                       fillOpacity={0.6}
                       activeDot={{ r: 6 }}
@@ -107,7 +110,7 @@ const EnergyCharts = ({ currentData, solarEnabled, optimizedSchedule, totalStand
             
             {optimizedSchedule && (
               <p className="python-optimizer-note">
-                Python Optimizer: {formatCurrency(optimizedSchedule.savings.daily)} daily savings 
+                OptiMorph Optimizer: {formatCurrency(optimizedSchedule.savings.daily)} daily savings 
                 ({((optimizedSchedule.savings.daily / totalStandardCost) * 100).toFixed(1)}%)
               </p>
             )}
@@ -139,8 +142,17 @@ const EnergyCharts = ({ currentData, solarEnabled, optimizedSchedule, totalStand
                     tick={{ fontSize: 12 }} 
                     interval={3} 
                   />
-                  <YAxis yAxisId="left" tick={{ fontSize: 12 }} domain={[0, 3.1]} />
-                  <YAxis yAxisId="right" orientation="right" tick={{ fontSize: 12 }} domain={[0, 100]} />
+                  <YAxis 
+                    yAxisId="left" 
+                    tick={{ fontSize: 12 }} 
+                    tickFormatter={(value) => `${value}kW`}
+                  />
+                  <YAxis 
+                    yAxisId="right" 
+                    orientation="right" 
+                    tick={{ fontSize: 12 }}
+                    tickFormatter={(value) => `${value}%`}
+                  />
                   <Tooltip content={renderTooltip} />
                   <Legend />
                   <Bar 

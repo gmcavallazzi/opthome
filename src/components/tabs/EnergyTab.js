@@ -38,14 +38,17 @@ const EnergyTab = ({ currentData, solarEnabled }) => {
           </CardHeader>
           <CardContent>
             <div className="chart-container">
-              <ResponsiveContainer width="100%" height={300}>
+              <ResponsiveContainer width="100%" height={250}>
                 <BarChart
                   data={currentData}
                   margin={{ top: 5, right: 30, left: 20, bottom: 5 }}
                 >
                   <CartesianGrid strokeDasharray="3 3" opacity={0.2} />
                   <XAxis dataKey="time" tick={{ fontSize: 12 }} interval={2} />
-                  <YAxis tick={{ fontSize: 12 }} />
+                  <YAxis 
+                    tick={{ fontSize: 12 }} 
+                    tickFormatter={(value) => `${value} kW`} 
+                  />
                   <Tooltip content={renderTooltip} />
                   <Bar 
                     dataKey="solarProduction" 
@@ -88,7 +91,7 @@ const EnergyTab = ({ currentData, solarEnabled }) => {
           </CardHeader>
           <CardContent>
             <div className="chart-container">
-              <ResponsiveContainer width="100%" height={300}>
+              <ResponsiveContainer width="100%" height={250}>
                 <LineChart
                   data={currentData}
                   margin={{ top: 5, right: 30, left: 20, bottom: 5 }}
@@ -144,7 +147,7 @@ const EnergyTab = ({ currentData, solarEnabled }) => {
         </CardHeader>
         <CardContent>
           <div className="chart-container">
-            <ResponsiveContainer width="100%" height={300}>
+            <ResponsiveContainer width="100%" height={250}>
               <LineChart
                 data={currentData}
                 margin={{ top: 5, right: 30, left: 20, bottom: 5 }}

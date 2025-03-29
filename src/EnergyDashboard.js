@@ -369,10 +369,26 @@ const EnergyDashboard = () => {
       {/* Header */}
       <div className="header">
         <div className="header-content">
-          <h1 className="header-title">
-            <span className="icon"><Home size={20} /></span> 
-            Home Energy Optimization Dashboard
-          </h1>
+        <div className="logo-and-title" style={{ display: 'flex', alignItems: 'center' }}>
+          <img 
+            src="/images/opthome.png" 
+            alt="OptHome Logo" 
+            className="header-logo"
+            style={{ 
+              height: '60px', // Increased from 32px to 60px
+              width: 'auto',
+              marginRight: '15px'
+            }}
+          />
+          <div>
+            <h1 className="header-title" style={{ margin: 0 }}>
+              Home Energy Optimization Dashboard
+            </h1>
+            <p className="header-subtitle">
+              Optimize your energy usage, reduce costs, and maximize solar production
+            </p>
+          </div>
+        </div>
           <div className="header-controls">
             <div className="solar-toggle">
               <span>Solar Panels:</span>
@@ -412,9 +428,6 @@ const EnergyDashboard = () => {
             </div>
           </div>
         </div>
-        <p className="header-subtitle">
-          Optimize your energy usage, reduce costs, and maximize {solarEnabled ? 'solar production' : 'efficiency'}
-        </p>
       </div>
       
       {/* Main Content */}

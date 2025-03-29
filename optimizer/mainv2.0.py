@@ -122,11 +122,11 @@ class HEMS_BPSO:
                 self.dap[i, 1] = i + 1
                 self.dap[i, 2] = portugal_prices[i]
             print("Loaded DAP data")
-            plt.figure(figsize=(10,6))
-            plt.plot(self.dap[:,2])
-            plt.ylabel('cent')
-            plt.grid()
-            plt.tight_layout()
+            #plt.figure(figsize=(10,6))
+            #plt.plot(self.dap[:,2])
+            #plt.ylabel('cent')
+            #plt.grid()
+            #plt.tight_layout()
         except Exception as e:
             print(f"Warning: Could not load DAP data: {e}")
             # Fallback to synthetic data
@@ -149,9 +149,9 @@ class HEMS_BPSO:
                     self.res[i, 2] = daily_data[i]  # Energy generation in kWh/m²
                 
                 print("Loaded RES data")
-                plt.figure(figsize=(8,6))
-                plt.plot(daily_data)
-                plt.grid()
+                #plt.figure(figsize=(8,6))
+                #plt.plot(daily_data)
+                #plt.grid()
             except Exception as e:
                 print(f"Warning: Could not load RES data: {e}")
                 # Fallback to synthetic data
@@ -356,34 +356,34 @@ class HEMS_BPSO:
     def plot_results(self):
         """Plot optimization results"""
         # Plot convergence
-        plt.figure(figsize=(10, 6))
-        plt.semilogy(self.best_costs, linewidth=2)
-        plt.xlabel('Iteration')
-        plt.ylabel('Best Cost')
-        plt.title('Best Cost Evolution - PSO Algorithm')
-        plt.grid(True)
-        plt.tight_layout()
+        #plt.figure(figsize=(10, 6))
+        #plt.semilogy(self.best_costs, linewidth=2)
+        #plt.xlabel('Iteration')
+        #plt.ylabel('Best Cost')
+        #plt.title('Best Cost Evolution - PSO Algorithm')
+        #plt.grid(True)
+        #plt.tight_layout()
         # Plot ESS energy level
-        plt.figure(figsize=(10, 6))
+        #plt.figure(figsize=(10, 6))
         e_level_plot = np.zeros(25)
         e_level_plot[0] = 0.5
         e_level_plot[1:] = self.best_e_level
-        plt.plot(range(25), e_level_plot)
-        plt.title('Energy Level of ESS at Each Time Slot')
-        plt.xlabel('Time Slot')
-        plt.ylabel('kWh')
-        plt.grid(True)
+        #plt.plot(range(25), e_level_plot)
+        #plt.title('Energy Level of ESS at Each Time Slot')
+        #plt.xlabel('Time Slot')
+        #plt.ylabel('kWh')
+        #plt.grid(True)
         
         # Plot home energy load and grid energy
-        plt.figure(figsize=(10, 6))
+        #plt.figure(figsize=(10, 6))
         total_e_mg = self.best_eld_home - self.best_e_load_res + self.best_e_charge_mg - self.best_e_load_ess
-        plt.plot(range(24), total_e_mg, 'b', label='Energy from Main Grid')
-        plt.plot(range(24), self.best_eld_home, 'r', label='Home Load')
-        plt.legend()
-        plt.title('Energy Consumption Profile')
-        plt.xlabel('Time Slot')
-        plt.ylabel('kWh')
-        plt.grid(True)
+        #plt.plot(range(24), total_e_mg, 'b', label='Energy from Main Grid')
+        #plt.plot(range(24), self.best_eld_home, 'r', label='Home Load')
+        #plt.legend()
+        #plt.title('Energy Consumption Profile')
+        #plt.xlabel('Time Slot')
+        #plt.ylabel('kWh')
+        #plt.grid(True)
 
     
     def print_results(self):

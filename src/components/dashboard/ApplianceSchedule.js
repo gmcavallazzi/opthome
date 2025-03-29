@@ -25,7 +25,7 @@ const ApplianceSchedule = ({
       
       <CardContent>
         <div className="appliance-grid">
-          <div className="appliance-list">
+          <div className="appliance-list" style={{ width: '35%', minWidth: '250px' }}>
             <div className="appliance-header">
               <h3>Select Appliance</h3>
               <button 
@@ -60,6 +60,7 @@ const ApplianceSchedule = ({
             </div>
           </div>
           
+          <div className="appliance-detail-container" style={{ width: '65%' }}>
           {selectedAppliance ? (
             <div className="appliance-detail">
               <h3 className="appliance-detail-title">
@@ -122,6 +123,7 @@ const ApplianceSchedule = ({
               Select an appliance to view optimization options
             </div>
           )}
+        </div>
         </div>
       </CardContent>
     </Card>

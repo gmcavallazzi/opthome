@@ -34,10 +34,10 @@ const AppliancesTab = ({
         <CardContent>
           <div className="chart-container">
             <ResponsiveContainer width="100%" height={400}>
-              <BarChart
-                data={[...appliances, ...userAppliances]}
-                margin={{ top: 20, right: 30, left: 50, bottom: 80 }} // Increased bottom margin
-              >
+            <BarChart
+              data={[...appliances, ...userAppliances]}
+              margin={{ top: 20, right: 30, left: 50, bottom: 160 }}
+            >
                 <CartesianGrid strokeDasharray="3 3" opacity={0.2} />
                 <XAxis 
                   dataKey="name" 

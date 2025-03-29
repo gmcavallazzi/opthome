@@ -68,7 +68,7 @@ const StatsGrid = ({ currentData, solarEnabled, savingsAmount, savingsPercentage
           <div>
             <p className="stat-label">Battery Status</p>
             <p className="stat-value battery-value">
-              {currentData[currentHour].batteryCharge}%
+              {Math.round(currentData[currentHour].batteryCharge)}%
             </p>
           </div>
           <div className="stat-icon battery-icon">

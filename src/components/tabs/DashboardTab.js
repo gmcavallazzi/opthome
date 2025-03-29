@@ -55,6 +55,7 @@ const DashboardTab = ({
       <OptimizationResults optimizedSchedule={optimizedSchedule} />
       
       {/* Daily Plan */}
+      {!optimizedSchedule && (
       <Card className="plan-card">
         <CardHeader>
           <CardTitle>
@@ -111,6 +112,7 @@ const DashboardTab = ({
           </div>
         </CardContent>
       </Card>
+      )}
     </div>
   );
 };
