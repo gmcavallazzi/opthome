@@ -74,65 +74,38 @@ export const runOptimization = async (appliances, userAppliances, solarEnabled, 
  * Button component for one-click optimization
  */
 export const OptimizeButton = ({ 
-  appliances, 
-  userAppliances, 
-  solarEnabled, 
-  energySettings,
-  onOptimizationComplete,
+  onOptimize, // Change this to receive the handler directly
   isRunning = false
 }) => {
-  const handleOptimize = async () => {
-    try {
-      const results = await runOptimization(
-        appliances, 
-        userAppliances, 
-        solarEnabled, 
-        energySettings
-      );
-      
-      if (onOptimizationComplete) {
-        onOptimizationComplete(results);
-      }
-    } catch (error) {
-      console.error("Optimization failed:", error);
-      alert("Optimization failed. Please try again.");
-    }
-  };
-  
   return (
     <button
-      onClick={handleOptimize}
-      style={{
-        display: 'inline-flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        padding: '0.5rem 1rem',
-        borderRadius: '0.375rem',
-        fontSize: '0.875rem',
-        fontWeight: '600',
-        color: 'white',
-        background: 'linear-gradient(135deg, #4f46e5 0%, #8b5cf6 100%)',
-        border: 'none',
-        boxShadow: '0 2px 4px rgba(0, 0, 0, 0.1)',
-        cursor: 'pointer',
-        marginLeft: '0.5rem',
-      }}
+      onClick={onOptimize} // Use the passed function
+      className={`optimize-button ${isRunning ? 'optimizing' : ''}`}
       disabled={isRunning}
       title="Run Python optimization"
     >
-      <svg 
-        xmlns="http://www.w3.org/2000/svg" 
-        viewBox="0 0 24 24" 
-        fill="none" 
-        stroke="currentColor" 
-        strokeWidth="2" 
-        strokeLinecap="round" 
-        strokeLinejoin="round" 
-        style={{ width: '1rem', height: '1rem', marginRight: '0.5rem' }}
-      >
-        <path d="M13 10V3L4 14h7v7l9-11h-7z" />
-      </svg>
-      <span>Optimize</span>
+      {isRunning ? (
+        <>
+          <div className="spinner"></div>
+          <span>Optimizing...</span>
+        </>
+      ) : (
+        <>
+          <svg 
+            xmlns="http://www.w3.org/2000/svg" 
+            viewBox="0 0 24 24" 
+            fill="none" 
+            stroke="currentColor" 
+            strokeWidth="2" 
+            strokeLinecap="round" 
+            strokeLinejoin="round" 
+            className="optimize-icon"
+          >
+            <path d="M13 10V3L4 14h7v7l9-11h-7z" />
+          </svg>
+          <span>Optimize</span>
+        </>
+      )}
     </button>
   );
 };

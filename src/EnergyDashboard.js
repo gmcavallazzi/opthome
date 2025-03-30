@@ -199,28 +199,28 @@ const EnergyDashboard = () => {
   };
   
   // Handle optimization
-  const handleOptimization = async () => {
-    setOptimizationRunning(true);
-    try {
-      const result = await runOptimization(
-        appliances, 
-        userAppliances, 
-        solarEnabled, 
-        energySettings
-      );
-      setOptimizedSchedule(result);
-      setOptimizationSuccess(result);
-      
-      // Update appliances with optimized schedule if available
-      if (result && result.optimized_appliances) {
-        handleScheduleImport(result);
-      }
-    } catch (error) {
-      console.error("Optimization failed:", error);
-    } finally {
-      setOptimizationRunning(false);
+const handleOptimization = async () => {
+  setOptimizationRunning(true); // Set to true when starting
+  try {
+    const result = await runOptimization(
+      appliances, 
+      userAppliances, 
+      solarEnabled, 
+      energySettings
+    );
+    setOptimizedSchedule(result);
+    setOptimizationSuccess(result);
+    
+    // Update appliances with optimized schedule if available
+    if (result && result.optimized_appliances) {
+      handleScheduleImport(result);
     }
-  };
+  } catch (error) {
+    console.error("Optimization failed:", error);
+  } finally {
+    setOptimizationRunning(false); // Set to false when completed
+  }
+};
   
   // Handle adding a new appliance
   const handleAddAppliance = () => {
@@ -450,11 +450,7 @@ const EnergyDashboard = () => {
             {/* Buttons for export, import and optimize */}
             <div className="header-buttons">
               <OptimizeButton 
-                appliances={appliances}
-                userAppliances={userAppliances}
-                solarEnabled={solarEnabled}
-                energySettings={energySettings}
-                onOptimizationComplete={handleScheduleImport}
+                onOptimize={handleOptimization}
                 isRunning={optimizationRunning}
               />
               <ExportToPythonButton 
