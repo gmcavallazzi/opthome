@@ -139,10 +139,29 @@ const EnergyDashboard = () => {
   const currentData = calculateData();
   
   // Calculate savings based on current data
-  const totalStandardCost = currentData.reduce((sum, hour) => sum + hour.standardCost, 0);
-  const totalOptimalCost = currentData.reduce((sum, hour) => sum + hour.optimalCost, 0);
-  const savingsAmount = totalStandardCost - totalOptimalCost;
-  const savingsPercentage = (savingsAmount / totalStandardCost * 100).toFixed(1);
+  const calculateSavings = () => {
+    const totalStandardCost = currentData.reduce((sum, hour) => sum + hour.standardCost, 0);
+    
+    // If we have an optimized schedule with its own savings, use that directly
+    if (optimizedSchedule && optimizedSchedule.savings && optimizedSchedule.savings.daily) {
+      const savingsAmount = optimizedSchedule.savings.daily;
+      const savingsPercentage = (savingsAmount / totalStandardCost * 100).toFixed(1);
+      return { totalStandardCost, savingsAmount, savingsPercentage };
+    }
+    
+    // Otherwise, calculate from the current optimalCost data
+    const totalOptimalCost = currentData.reduce((sum, hour) => {
+      // Use optimizedCost if available, otherwise fall back to optimalCost
+      return sum + (hour.optimizedCost !== undefined ? hour.optimizedCost : hour.optimalCost);
+    }, 0);
+    
+    const savingsAmount = totalStandardCost - totalOptimalCost;
+    const savingsPercentage = (savingsAmount / totalStandardCost * 100).toFixed(1);
+    
+    return { totalStandardCost, savingsAmount, savingsPercentage };
+  };
+
+  const { totalStandardCost, savingsAmount, savingsPercentage } = calculateSavings();
 
   // Handle imported schedule
   const handleScheduleImport = (data) => {
