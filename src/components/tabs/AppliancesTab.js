@@ -36,7 +36,7 @@ const AppliancesTab = ({
             <ResponsiveContainer width="100%" height={400}>
             <BarChart
               data={[...appliances, ...userAppliances]}
-              margin={{ top: 20, right: 30, left: 50, bottom: 160 }}
+              margin={{ top: 20, right: 30, left: 50, bottom: 135 }}
             >
                 <CartesianGrid strokeDasharray="3 3" opacity={0.2} />
                 <XAxis 
@@ -48,7 +48,7 @@ const AppliancesTab = ({
                   height={80} // Increased height for better x-axis label spacing
                 />
                 <YAxis 
-                  label={{ value: 'Power (Watts)', angle: -90, position: 'insideLeft', offset: -35 }} 
+                  label={{ value: 'Power (Watts)', angle: -90, position: 'insideLeft', offset: -30 }} 
                   tick={{ fontSize: 12 }}
                 />
                 <Tooltip 
